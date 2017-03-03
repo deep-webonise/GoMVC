@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/deep/GoMVC/model"
+	"github.com/deep/GoMVC/models/mafiaDB"
 	"github.com/gorilla/mux"
 )
 
@@ -14,9 +14,9 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func TodoIndex(w http.ResponseWriter, r *http.Request) {
-	todos := model.Todos{
-		model.Todo{Name: "Write presentation"},
-		model.Todo{Name: "Host meetup"},
+	todos := mafiaDB.Todos{
+		mafiaDB.Todo{Name: "Write presentation"},
+		mafiaDB.Todo{Name: "Host meetup"},
 	}
 
 	if err := json.NewEncoder(w).Encode(todos); err != nil {
